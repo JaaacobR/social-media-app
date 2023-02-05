@@ -1,7 +1,8 @@
 defmodule SocialMediaApiWeb.AccountController do
   use SocialMediaApiWeb, :controller
 
-  alias SocialMediaApi.Accounts
+  alias SocialMediaApiWeb.Auth.Guardian
+  alias SocialMediaApi.{Accounts, Accounts.Account, Users, Users.User}
   alias SocialMediaApi.Accounts.Account
 
   action_fallback SocialMediaApiWeb.FallbackController
@@ -17,10 +18,12 @@ defmodule SocialMediaApiWeb.AccountController do
   end
 
   def create(conn, %{"account" => account_params}) do
-    with {:ok, %Account{} = account} <- Accounts.create_account(account_params) do
+    with {:ok, %Account{} = account} <- Accounts.create_account(account_params),
+        {:ok, token, _claims} <- Guardian.encode_and_sign(account),
+        {:ok, %User{} = _user} <- Users.create_user(account, account_params) do
       conn
       |> put_status(:created)
-      |> render("show.json", account: account)
+      |> render("account_token.json", account: account, token: token)
     end
   end
 

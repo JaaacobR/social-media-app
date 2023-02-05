@@ -6,11 +6,11 @@ function App() {
   const handleClick = () => {
     const body = JSON.stringify({
       account: {
-        email: "q123341f@example.com",
+        email: "firstqw@example.com",
         hash_password: "khdsjgfsd",
       },
     });
-    fetch("http://localhost:4000/api/create", {
+    fetch("http://localhost:4000/api/accounts/create", {
       method: "POST",
       body: body,
       headers: {
