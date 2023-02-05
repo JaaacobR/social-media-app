@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :social_media_api, SocialMediaApi.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "jakub",
+  password: "",
   hostname: "localhost",
   database: "social_media_api_dev",
   stacktrace: true,
