@@ -3,13 +3,23 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  useEffect(() => {
-    fetch("http://localhost:4000/api")
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+  const handleClick = () => {
+    const body = JSON.stringify({
+      account: {
+        email: "q123341f@example.com",
+        hash_password: "khdsjgfsd",
+      },
+    });
+    fetch("http://localhost:4000/api/create", {
+      method: "POST",
+      body: body,
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -25,6 +35,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleClick}>sbdkflsd</button>
       </header>
     </div>
   );
