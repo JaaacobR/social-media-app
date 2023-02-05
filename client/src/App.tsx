@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { response } from "express";
 
 function App() {
   useEffect(() => {
