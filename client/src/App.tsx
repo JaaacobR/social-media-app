@@ -20,6 +20,22 @@ function App() {
       .then((response) => response.json())
       .then((data) => console.log(data));
   };
+
+  const handleSignIn = () => {
+    const body = JSON.stringify({
+      email: "firstqw@example.com",
+      hash_password: "khdsjgsd",
+    });
+    fetch("http://localhost:4000/api/accounts/sign_in", {
+      method: "POST",
+      body: body,
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -36,6 +52,7 @@ function App() {
           Learn React
         </a>
         <button onClick={handleClick}>sbdkflsd</button>
+        <button onClick={handleSignIn}>Sign In</button>
       </header>
     </div>
   );
