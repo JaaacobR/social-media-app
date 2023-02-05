@@ -11,6 +11,10 @@ config :social_media_api,
   ecto_repos: [SocialMediaApi.Repo],
   generators: [binary_id: true]
 
+config :social_media_api, SocialMediaApiWeb.Auth.Guardian,
+  issuer: "social_media_api",
+  secret_key: "W2ytG//mTR+TOOwGmHdHh5khG5B4SC9cOcpyk4EheM4ZH4y2UHf0V3uxxfhJKmXE"
+
 # Configures the endpoint
 config :social_media_api, SocialMediaApiWeb.Endpoint,
   url: [host: "localhost"],
