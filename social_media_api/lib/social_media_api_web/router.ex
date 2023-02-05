@@ -7,5 +7,6 @@ defmodule SocialMediaApiWeb.Router do
 
   scope "/api", SocialMediaApiWeb do
     pipe_through :api
+    get "/", DefaultController, :index
   end
 end
