@@ -1,8 +1,9 @@
 defmodule SocialMediaApiWeb.UserController do
   use SocialMediaApiWeb, :controller
 
-  alias SocialMediaApi.Users
-  alias SocialMediaApi.Users.User
+  alias SocialMediaApiWeb.{Auth.Guardian, Auth.ErrorResponse}
+  alias SocialMediaApi.{Accounts, Accounts.Account, Users, Users.User}
+  alias SocialMediaApi.Accounts.Account
 
   action_fallback SocialMediaApiWeb.FallbackController
 
@@ -23,6 +24,17 @@ defmodule SocialMediaApiWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     render(conn, "show.json", user: user)
+  end
+
+  def sign_in(conn, %{"email" => email, "hash_password" => hash_password}) do
+    case Guardian.authenticate(email, hash_password) do
+      {:ok, account, token} ->
+        user = Users.get_user_by_account_id!(account.id)
+        conn
+        |> put_status(:ok)
+        |> render("user.json", %{user: user, token: token})
+      {:error, :unauthorized} -> raise ErrorResponse.Unauthorized, message: "Email or Password incorrect!"
+    end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

@@ -37,6 +37,8 @@ defmodule SocialMediaApi.Users do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  def get_user_by_account_id!(account_id), do: Repo.get_by!(User, account_id: account_id)
+
   @doc """
   Creates a user.
 

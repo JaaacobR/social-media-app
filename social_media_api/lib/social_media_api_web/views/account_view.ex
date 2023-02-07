@@ -25,4 +25,13 @@ defmodule SocialMediaApiWeb.AccountView do
       token: token
     }
   end
+
+  def render("user.json", %{user: user, token: token}) do
+    %{
+      id: user.id,
+      email: user.gender,
+      token: token
+    }
+
+  end
 end
