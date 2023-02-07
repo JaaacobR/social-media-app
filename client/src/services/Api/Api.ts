@@ -26,7 +26,7 @@ class ApiService {
       );
       console.log(res);
     } catch (err) {
-      throw new Error("Cannot sign in" + err);
+      console.log(err);
     }
   }
 }

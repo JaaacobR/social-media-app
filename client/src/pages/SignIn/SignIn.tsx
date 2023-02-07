@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import { useApi } from "../../hooks";
+import { useApi } from "hooks";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
