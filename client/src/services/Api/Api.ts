@@ -17,10 +17,13 @@ class ApiService {
 
   async logIn(credentials: Credentials): Promise<void> {
     try {
-      const res = await this.axios.post(this.baseUrl + "/api/account/sign_in", {
-        email: credentials.email,
-        hash_password: credentials.hash_password,
-      });
+      const res = await this.axios.post(
+        this.baseUrl + "/api/accounts/sign_in",
+        {
+          email: credentials.email,
+          hash_password: credentials.hash_password,
+        }
+      );
       console.log(res);
     } catch (err) {
       throw new Error("Cannot sign in" + err);

@@ -1,7 +1,8 @@
 import Api from "../services/Api";
 
 const useApi = () => {
-  return Api;
+  const api = new Api();
+  return api;
 };
 
 export default useApi;
