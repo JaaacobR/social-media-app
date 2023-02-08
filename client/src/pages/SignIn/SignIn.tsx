@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./SignIn.css";
 import { useApi } from "hooks";
+import { useRoutes } from "react-router";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,8 @@ export const SignIn = () => {
   };
 
   const handleLogIn = async () => {
-    await api.logIn({ email, hash_password: password });
+    const res = await api.logIn({ email, hash_password: password });
+    console.log(res);
   };
   return (
     <div className="main">

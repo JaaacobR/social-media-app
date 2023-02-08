@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
+import { User } from "./types";
+
 interface Credentials {
   email: string;
   hash_password: string;
@@ -15,7 +17,7 @@ class ApiService {
     });
   }
 
-  async logIn(credentials: Credentials): Promise<void> {
+  async logIn(credentials: Credentials): Promise<User | null> {
     try {
       const res = await this.axios.post(
         this.baseUrl + "/api/accounts/sign_in",
@@ -24,9 +26,9 @@ class ApiService {
           hash_password: credentials.hash_password,
         }
       );
-      console.log(res);
+      return res.data;
     } catch (err) {
-      console.log(err);
+      return null;
     }
   }
 }
