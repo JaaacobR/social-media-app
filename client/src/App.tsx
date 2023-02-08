@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import "./App.css";
+import React from "react";
 import { Routes, Route } from "react-router";
 import { SignIn, Home } from "./pages";
 
