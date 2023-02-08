@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./SignIn.css";
 import { useApi } from "hooks";
-import { useRoutes } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const api = useApi();
+  const navigate = useNavigate();
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
@@ -18,7 +19,7 @@ export const SignIn = () => {
 
   const handleLogIn = async () => {
     const res = await api.logIn({ email, hash_password: password });
-    console.log(res);
+    res && navigate("/home")
   };
   return (
     <div className="main">
