@@ -17,6 +17,13 @@ defmodule SocialMediaApiWeb.AccountController do
     render(conn, "show.json", account: account)
   end
 
+  def upload_photo(conn, %{"file" => files}) do
+    IO.inspect(files)
+    #IT Work
+    accounts = Accounts.list_accounts()
+    render(conn, "index.json", accounts: accounts)
+  end
+
   def create(conn, %{"account" => account_params}) do
     with {:ok, %Account{} = account} <- Accounts.create_account(account_params),
         {:ok, token, _claims} <- Guardian.encode_and_sign(account),

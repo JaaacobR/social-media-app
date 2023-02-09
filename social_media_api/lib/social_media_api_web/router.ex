@@ -24,5 +24,6 @@ defmodule SocialMediaApiWeb.Router do
     get "/", DefaultController, :index
     post "/accounts/create", AccountController, :create
     post "/accounts/sign_in", UserController, :sign_in
+    post "/photo", AccountController, :upload_photo
   end
 end
