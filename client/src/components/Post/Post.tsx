@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { PostProps } from "./types";
+import { CommentForm } from "components/CommentForm";
 
 export const Post: React.FC<PostProps> = ({
   user,
-  photos,
+  photoUrl,
+  description,
   reactions,
   comments,
 }) => {
@@ -16,13 +18,16 @@ export const Post: React.FC<PostProps> = ({
   return (
     <section>
       <div className="header">{user.fullName}</div>
-      // Slider
-      // Content Place
+      <img src={photoUrl} alt="postImage" />
+      <section>
+        <p>{description}</p>
+      </section>
       <div className="behaviors">
-        <div>Like It</div>
+        <div>Like It {reactions.length}</div>
         <div onClick={handleVisibleChange}>{commentText}</div>
       </div>
-      //CommentForm
+      {isCommentFormVisible && <CommentForm />}
+      
     </section>
   );
 };

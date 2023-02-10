@@ -1,6 +1,7 @@
 export interface PostProps {
   user: User;
-  photos: string[];
+  photoUrl: string;
+  description: string;
   reactions: User[];
   comments: Comment;
 }
