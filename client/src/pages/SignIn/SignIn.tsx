@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [file, setFile] = useState<any>(undefined);
+
   const api = useApi();
   const navigate = useNavigate();
 
