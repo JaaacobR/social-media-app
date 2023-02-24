@@ -9,7 +9,7 @@ defmodule SocialMediaApi.Users.User do
     field :full_name, :string
     field :gender, :string
     belongs_to :account, SocialMediaApi.Accounts.Account
-
+    belongs_to :posts, SocialMediaApi.Posts.Post
     timestamps()
   end
 
