@@ -1,11 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 
-import { User } from "./types";
+import { User , Credentials, PostData} from "./types";
 
-interface Credentials {
-  email: string;
-  hash_password: string;
-}
+
 class ApiService {
   private axios: AxiosInstance;
 
@@ -30,6 +27,11 @@ class ApiService {
     } catch (err) {
       return null;
     }
+  }
+
+  async createPost(postData:PostData) :Promise<void>{
+    
+
   }
 }
 

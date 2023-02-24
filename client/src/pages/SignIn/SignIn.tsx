@@ -10,13 +10,11 @@ export const SignIn = () => {
   const api = useApi();
   const navigate = useNavigate();
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
-  };
 
-  const handleEmailCHange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailCHange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(event.target.value);
-  };
 
   const handleLogIn = async () => {
     const res = await api.logIn({ email, hash_password: password });
