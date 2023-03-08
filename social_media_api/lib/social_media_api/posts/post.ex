@@ -6,7 +6,7 @@ defmodule SocialMediaApi.Posts.Post do
   @foreign_key_type :binary_id
   schema "posts" do
     field :description, :string
-    has_one :user, SocialMediaApi.Users.User
+    belongs_to :user, SocialMediaApi.Users.User
     timestamps()
   end
 

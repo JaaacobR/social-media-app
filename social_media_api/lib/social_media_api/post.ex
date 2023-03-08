@@ -1,4 +1,4 @@
-defmodule SocialMediaApi.Posts.Post do
+defmodule SocialMediaApi.Post do
 
   import Ecto.Query, warn: false
   alias SocialMediaApi.Repo
