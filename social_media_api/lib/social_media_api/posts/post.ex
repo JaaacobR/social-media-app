@@ -6,15 +6,14 @@ defmodule SocialMediaApi.Posts.Post do
   @foreign_key_type :binary_id
   schema "posts" do
     field :description, :string
-    belongs_to :user, SocialMediaApi.Users.User
+
     timestamps()
   end
 
   @doc false
-  def changeset(account, attrs) do
-    account
-    |> validate_required([:description])
+  def changeset(post, attrs) do
+    post
+    |> cast(attrs, [:description, :""])
+    |> validate_required([:description, :""])
   end
-
- 
 end
