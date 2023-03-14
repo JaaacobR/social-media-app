@@ -6,14 +6,12 @@ defmodule SocialMediaApiWeb.PostControllerTest do
   alias SocialMediaApi.Posts.Post
 
   @create_attrs %{
-    : "some ",
     description: "some description"
   }
   @update_attrs %{
-    : "some updated ",
     description: "some updated description"
   }
-  @invalid_attrs %{"": nil, description: nil}
+  @invalid_attrs %{description: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -35,7 +33,6 @@ defmodule SocialMediaApiWeb.PostControllerTest do
 
       assert %{
                "id" => ^id,
-               "" => "some ",
                "description" => "some description"
              } = json_response(conn, 200)["data"]
     end
@@ -57,7 +54,6 @@ defmodule SocialMediaApiWeb.PostControllerTest do
 
       assert %{
                "id" => ^id,
-               "" => "some updated ",
                "description" => "some updated description"
              } = json_response(conn, 200)["data"]
     end

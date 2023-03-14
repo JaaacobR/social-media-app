@@ -3,6 +3,7 @@ defmodule SocialMediaApiWeb.PostController do
 
   alias SocialMediaApi.Posts
   alias SocialMediaApi.Posts.Post
+  alias SocialMediaApi.Users
 
   action_fallback SocialMediaApiWeb.FallbackController
 
@@ -12,10 +13,13 @@ defmodule SocialMediaApiWeb.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
-    with {:ok, %Post{} = post} <- Posts.create_post(post_params) do
+    IO.inspect(post_params["user_id"])
+    a = Users.get_user!(post_params["user_id"])
+    IO.inspect(a)
+    with user <- Users.get_user!(post_params["user_id"]),
+    {:ok, %Post{} = post} <- Posts.create_post(user, post_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.post_path(conn, :show, post))
       |> render("show.json", post: post)
     end
   end

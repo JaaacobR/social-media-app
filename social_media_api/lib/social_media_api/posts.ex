@@ -7,13 +7,6 @@ defmodule SocialMediaApi.Posts do
 
   def get_post!(id), do: Repo.get!(Post, id)    
 
-  def create_post(post, attrs \\ %{}) do
-    post
-    |> Post.changeset(attrs)
-    |> Repo.insert()
-  end
-
-
   alias SocialMediaApi.Posts.Post
 
   @doc """
@@ -57,9 +50,11 @@ defmodule SocialMediaApi.Posts do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_post(attrs \\ %{}) do
-    %Post{}
-    |> Post.changeset(attrs)
+  def create_post(user, post_params) do
+    
+    user
+    |> Ecto.build_assoc(:post)
+    |> Post.changeset(post_params)
     |> Repo.insert()
   end
 

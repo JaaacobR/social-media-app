@@ -13,8 +13,7 @@ defmodule SocialMediaApiWeb.PostView do
   def render("post.json", %{post: post}) do
     %{
       id: post.id,
-      description: post.description,
-      
+      description: post.description
     }
   end
 end

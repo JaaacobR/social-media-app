@@ -52,6 +52,7 @@ defmodule SocialMediaApi.Users do
 
   """
   def create_user(account, attrs \\ %{}) do
+    IO.inspect(account)
     account
     |> Ecto.build_assoc(:user)
     |> User.changeset(attrs)
