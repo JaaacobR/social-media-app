@@ -13,9 +13,6 @@ defmodule SocialMediaApiWeb.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
-    IO.inspect(post_params["user_id"])
-    a = Users.get_user!(post_params["user_id"])
-    IO.inspect(a)
     with user <- Users.get_user!(post_params["user_id"]),
     {:ok, %Post{} = post} <- Posts.create_post(user, post_params) do
       conn
